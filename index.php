@@ -1,53 +1,18 @@
 <?php
-function FunctionName($longestKey)
+function FunctionName($arr)
 {
-  $array = array("coder", "byte", "code");
-  // $array = array("abc", "defg", "z", "hijk");
-  usort($array, function ($a, $b) {
-    return strlen($a) > strlen($b);
-  });
-  // $p = print_r($array);
-  print_r("Input: ") . print_r($array);
-  array_pop($array);
-  array_pop($array);
-  $longestKey = array_reduce($array, function ($a, $b) {
-    $var =  strlen($a) > strlen($b) ? $a : $b;
-    return $var;
-  });
+  $array = array(1, 1, 1, -5);
+  // $array = array(0, 0, 2, 3, 7, 1);
+  sort($array);
+  print_r("\nInput: ") . print_r($array);
+  $p1 = array_pop($array);
+  $p2 = array_pop($array);
+  $p3 = array_pop($array);
+  $p4 = array_pop($array);
 
-  return "Output: " . $longestKey;
+  // $arr = print_r($p1 + $p2 + $p3 + $p4);
+  // echo $p1
+  $arr = $p1 + $p2 + $p3 + $p4;
+  return "\nOutput: " . $arr;
 }
 echo FunctionName(fgets(fopen('E:\laragon\www\TestJavan\index.php', 'r')));
-
-// function ArrayChallenge($strArr)
-// {
-//   $var = array("coder", "byte", "code");
-//   $c = $var[0];
-//   $len = strlen($c);
-//   return $len;
-// }
-// echo ArrayChallenge(fgets(fopen('E:\laragon\www\TestJavan\index.php', 'r')));
-
-
-
-// function FunctionName($longestKey)
-// {
-//   $array = array('ss', 'ggg', 'ddfdfddf', 'ssssdssssss', 'saadadsadasdasdasasd');
-//   array_pop($array);
-//   $longestKey = array_reduce($array, function ($a, $b) {
-//     $var =  strlen($a) > strlen($b) ? $a : $b;
-//     return $var;
-//   });
-//   return $longestKey;
-// }
-// echo FunctionName(fgets(fopen('E:\laragon\www\TestJavan\index.php', 'r')));
-  
-  
-  
-  //  $colors = array("red", "green", "blue", "yellow");
-  // foreach ($colors as $value) {
-  //   // strlen($value);
-  //   // $min = min($value);
-  //   // min($value);
-  //   echo $value . "\n";
-  // }
