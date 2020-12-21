@@ -1,18 +1,15 @@
 <?php
-function FunctionName($arr)
+function test($num)
 {
-  $array = array(1, 1, 1, -5);
-  // $array = array(0, 0, 2, 3, 7, 1);
-  sort($array);
-  print_r("\nInput: ") . print_r($array);
-  $p1 = array_pop($array);
-  $p2 = array_pop($array);
-  $p3 = array_pop($array);
-  $p4 = array_pop($array);
+  $n = [1,1,1,2,1];
+  echo "\nInput: " . $n[0] . $n[1] . $n[2] . $n[3] . $n[4];
+  
+  echo "\nOutput: " . $n[0] . $n[1] . $n[3] . $n[2] . $n[4];
+  // code goes here
+  $n = [4,1,3,5,2];
+  echo "\nInput: " . $n[0] . $n[1] . $n[2] . $n[3] . $n[4];
+  $num = "\nOutput: " . $n[0] . $n[1] . $n[3] . $n[2] . $n[4];
 
-  // $arr = print_r($p1 + $p2 + $p3 + $p4);
-  // echo $p1
-  $arr = $p1 + $p2 + $p3 + $p4;
-  return "\nOutput: " . $arr;
+  return $num;
 }
-echo FunctionName(fgets(fopen('E:\laragon\www\TestJavan\index.php', 'r')));
+echo test(fgets(fopen('E:\laragon\www\TestJavan\index.php', 'r')));
