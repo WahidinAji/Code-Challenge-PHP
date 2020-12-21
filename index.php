@@ -1,15 +1,60 @@
 <?php
-function test($num)
-{
-  $n = [1,1,1,2,1];
-  echo "\nInput: " . $n[0] . $n[1] . $n[2] . $n[3] . $n[4];
-  
-  echo "\nOutput: " . $n[0] . $n[1] . $n[3] . $n[2] . $n[4];
-  // code goes here
-  $n = [4,1,3,5,2];
-  echo "\nInput: " . $n[0] . $n[1] . $n[2] . $n[3] . $n[4];
-  $num = "\nOutput: " . $n[0] . $n[1] . $n[3] . $n[2] . $n[4];
+// A O(n^2) time and O(1) space program to find the longest palindromic substring 
 
-  return $num;
+// A utility function to print a substring str[low..high] 
+function pSubStr($str, $low, $high)
+{
+  for ($i = $low; $i <= $high; ++$i)
+    echo $str[$i];
 }
-echo test(fgets(fopen('E:\laragon\www\TestJavan\index.php', 'r')));
+
+// This function prints the longest palindrome substring (LPS) 
+// of str[]. It also returns the length of the longest palindrome 
+function longestPalSubstr($str)
+{
+  $maxLength = 1; // The result (length of LPS) 
+
+  $start = 0;
+  $len = strlen($str);
+
+  // One by one consider every character as center point of 
+  // even and length palindromes 
+  for ($i = 1; $i < $len; ++$i) {
+    // Find the longest even length palindrome with center points 
+    // as i-1 and i. 
+    $low = $i - 1;
+    $high = $i;
+    while ($low >= 0 && $high < $len && $str[$low] == $str[$high]) {
+      if ($high - $low + 1 > $maxLength) {
+        $start = $low;
+        $maxLength = $high - $low + 1;
+      }
+      --$low;
+      ++$high;
+    }
+
+    // Find the longest odd length palindrome with center 
+    // point as i 
+    $low = $i - 1;
+    $high = $i + 1;
+    while ($low >= 0 && $high < $len && $str[$low] == $str[$high]) {
+      if ($high - $low + 1 > $maxLength) {
+        $start = $low;
+        $maxLength = $high - $low + 1;
+      }
+      --$low;
+      ++$high;
+    }
+  }
+
+  echo "Longest palindrome substring is: ";
+  pSubStr($str, $start, $start + $maxLength - 1);
+
+  return $maxLength;
+}
+
+// Driver program to test above functions 
+
+$str = "forgeeksskeegfor";
+echo "\nLength is: " . longestPalSubstr($str);
+return 0;
